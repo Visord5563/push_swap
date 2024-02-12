@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/11 05:08:05 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/12 03:50:31 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,21 +143,65 @@ char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*nstr;
 	size_t	len;
+	size_t	i;
+	size_t	j;
 
-	if (!s1 && !s2)
+	if (!s2)
 		return (NULL);
-	if (!s1 || !s2)
-	{
-		if (!s1)
-			return (ft_strdup(s2));
-		else if (!s2)
-			return (ft_strdup(s1));
-	}
-	len = ft_strlen(s1) + ft_strlen(s2) + 1;
+	if (!s1)
+		return (ft_strdup(s2));
+	i = 0;
+	len = ft_strlen(s1) + ft_strlen(s2) + 2;
 	nstr = (char *)malloc(sizeof(char) * len);
 	if (!nstr)
 		return (NULL);
-	// ft_strlcpy(nstr, s1, ft_strlen(s1) + 1);
-	// ft_strlcat(nstr, s2, len);
+	while (s1[i] != '\0')
+    {
+		nstr[i] = s1[i];
+        i++;
+    }
+	nstr[i++] = ' ';
+	j = 0;
+	while (s2[j] != '\0')
+		nstr[i++] = s2[j++];
+    nstr[i++] = '\0';
 	return (nstr);
+}
+
+static int	result(const char *s, int i, int sign)
+{
+	long long	r;
+
+	r = 0;
+	while (s[i] >= '0' && s[i] <= '9')
+	{
+		if (r * 10 > 2147483640 || (r * 10 == 2147483640 && ((s[i] > '7' && sign == 1) || (s[i] > '8' && sign == -1))))
+			return (write(2, "Error", 5));
+		r = r * 10 + (s[i] - 48);
+		i++;
+	}
+	return (r);
+}
+
+int	ft_atoi(const char *str)
+{
+	int					i;
+	long long			r;
+	int					s;
+
+	i = 0;
+	s = 1;
+	r = 0;
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			s *= -1;
+		i++;
+	}
+	if (str[i] == '+' || str[i] == '-')
+		return (write(2, "Error", 5));
+	r = result(str, i, s);
+	return (r * s);
 }
