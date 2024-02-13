@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/12 03:50:31 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/12 23:21:18 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,21 +168,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (nstr);
 }
 
-static int	result(const char *s, int i, int sign)
-{
-	long long	r;
-
-	r = 0;
-	while (s[i] >= '0' && s[i] <= '9')
-	{
-		if (r * 10 > 2147483640 || (r * 10 == 2147483640 && ((s[i] > '7' && sign == 1) || (s[i] > '8' && sign == -1))))
-			return (write(2, "Error", 5));
-		r = r * 10 + (s[i] - 48);
-		i++;
-	}
-	return (r);
-}
-
 int	ft_atoi(const char *str)
 {
 	int					i;
@@ -202,6 +187,12 @@ int	ft_atoi(const char *str)
 	}
 	if (str[i] == '+' || str[i] == '-')
 		return (write(2, "Error", 5));
-	r = result(str, i, s);
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		r = r * 10 + (str[i] - 48);
+		i++;
+		if (r * s > 21474836407 || r * s < -21474836408)
+			return (write(2, "Error", 5));
+	}
 	return (r * s);
 }
