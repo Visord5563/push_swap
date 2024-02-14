@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/12 23:21:18 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/14 00:56:01 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (s1);
 }
 
-static char	**ft_minisplit(char **str, const char *s, char c)
+char	**ft_minisplit(char **str, const char *s, char c)
 {
 	int	i;
 	int	j;
@@ -156,15 +156,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!nstr)
 		return (NULL);
 	while (s1[i] != '\0')
-    {
+	{
 		nstr[i] = s1[i];
-        i++;
-    }
+		i++;
+	}
 	nstr[i++] = ' ';
 	j = 0;
 	while (s2[j] != '\0')
 		nstr[i++] = s2[j++];
-    nstr[i++] = '\0';
+	nstr[i++] = '\0';
 	return (nstr);
 }
 
@@ -177,7 +177,7 @@ int	ft_atoi(const char *str)
 	i = 0;
 	s = 1;
 	r = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] == 32)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
