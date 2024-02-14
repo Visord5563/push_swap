@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/14 06:47:12 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/14 06:55:55 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,6 @@ void ra(t_stack **list)
 	t_stack	*tmp;
 	t_stack	*curnt;
 
-	curnt = *list;
 	tmp = *list;
 	curnt = ft_lstlast(*list);
 	curnt->next = tmp;
@@ -140,7 +139,6 @@ void rb(t_stack **list)
 	t_stack	*tmp;
 	t_stack	*curnt;
 
-	curnt = *list;
 	tmp = *list;
 	curnt = ft_lstlast(*list);
 	curnt->next = tmp;
@@ -153,7 +151,7 @@ int	main(int ac, char **av)
 {
 	char		*agv;
 	int			i;
-	t_stack	*a;
+	t_stack		*a;
 
 	a = NULL;
 	i = 1;
