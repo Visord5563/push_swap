@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 06:45:11 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/16 09:25:24 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,35 @@ int	stack_chek(t_stack *a, int at_oi)
 	return (0);
 }
 
+void	sort_3(t_stack **a)
+{
+	if (!((*a)->content < (*a)->next->content && (*a)->next->content < (*a)->next->next->content))
+	{
+		if ((*a)->content < (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
+		{
+			if ((*a)->content < (*a)->next->content && (*a)->content < (*a)->next->next->content)
+			{
+				sa(*a);
+				ra(a);
+			}
+			else
+				rra(a);
+		}
+		else if ((*a)->content > (*a)->next->content)
+		{
+			if ((*a)->next->content > (*a)->next->next->content)
+			{
+				sa(*a);
+				rra(a);
+			}
+			else
+				ra(a);
+		}
+		else
+			sa(*a);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	char		*agv;
@@ -88,20 +117,9 @@ int	main(int ac, char **av)
 	free(av);
 	if (i == 2 && (a->content > a->next->content))
 		sa(a);
-	if (i == 3 && !(a->content < a->next->content && a->next->content < a->next->next->content))
+	if (i == 3)
 	{
-		if (a->content < a->next->content && a->next->content > a->next->next->content)
-		{
-			sa(a);
-			ra(&a);
-		}
-		else if (a->content > a->next->content && a->next->content > a->next->next->content)
-		{
-			sa(a);
-			rra(&a);
-		}
-		else
-			sa(a);
+		sort_3(&a);
 	}
 	t_stack *tmp = a;
 	while (tmp)
@@ -117,7 +135,7 @@ int	main(int ac, char **av)
 	// 	// while(1);
 	// 	b = b->next;
 	// }
-	system("leaks push_swap");
+	// system("leaks push_swap");
 	// exit(1);
 	return (0);
 }

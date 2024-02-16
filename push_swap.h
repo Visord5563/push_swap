@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 02:07:26 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/16 08:40:09 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	pb(t_stack **a, t_stack **b);
 void	pa(t_stack **a, t_stack **b);
 void	rrr(t_stack **a, t_stack **b);
 void	rr(t_stack **a, t_stack **b);
-
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
