@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
-SRCM = main.c push_swap_util.c 
+SRCM = main.c utils.c move_utils.c move_utils1.c ft_split.c linkedlist.c
 
 OBJM = $(SRCM:%.c=%.o)
 

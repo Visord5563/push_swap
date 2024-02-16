@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/14 11:27:58 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/16 06:45:11 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,6 @@ int	ft_chek(char *av)
 	return (1);
 }
 
-t_stack	*ft_lstlast(t_stack *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-void	ft_lstadd_back(t_stack **lst, t_stack *new)
-{
-	t_stack	*node;
-
-	if (!*lst)
-	{
-		*lst = new;
-		return ;
-	}
-	node = *lst;
-	node = ft_lstlast(*lst);
-	node->next = new;
-}
-
-t_stack	*ft_lstnew(int content)
-{
-	t_stack	*list;
-
-	list = malloc(sizeof(t_stack));
-	if (!list)
-		return (NULL);
-	list->content = content;
-	list->next = NULL;
-	return (list);
-}
-
 int	stack_chek(t_stack *a, int at_oi)
 {
 	t_stack	*newlst;
@@ -89,142 +52,6 @@ int	stack_chek(t_stack *a, int at_oi)
 	return (0);
 }
 
-void	stack_clear(t_stack **lst)
-{
-	t_stack	*node;
-
-	while (*lst)
-	{
-		node = (*lst)->next;
-		free(*lst);
-		*lst = node;
-	}
-}
-
-void	sa(t_stack *a)
-{
-	int	tmp;
-
-	tmp = a->content;
-	a->content = a->next->content;
-	a->next->content = tmp;
-	write(1, "sa\n", 3);
-}
-
-void	sb(t_stack *b)
-{
-	int	tmp;
-
-	tmp = b->content;
-	b->content = b->next->content;
-	b->next->content = tmp;
-	write(1, "sb\n", 3);
-}
-
-void	ss(t_stack *a, t_stack *b)
-{
-	sa(a);
-	sb(b);
-	write(1, "ss\n", 3);
-}
-
-void ra(t_stack **a)
-{
-	t_stack	*tmp;
-	t_stack	*curnt;
-
-	tmp = *a;
-	curnt = ft_lstlast(*a);
-	curnt->next = tmp;
-	(*a) = tmp->next;
-	tmp->next = NULL;
-	write(1, "ra\n", 3);
-}
-
-void rb(t_stack **b)
-{
-	t_stack	*tmp;
-	t_stack	*curnt;
-
-	tmp = *b;
-	curnt = ft_lstlast(*b);
-	curnt->next = tmp;
-	(*b) = tmp->next;
-	tmp->next = NULL;
-	write(1, "rb\n", 3);
-}
-
-void	ft_lstadd_front(t_stack **lst, t_stack *new)
-{
-	if (!new)
-		return ;
-	new->next = *lst;
-	*lst = new;
-}
-
-void	rra(t_stack **a)
-{
-	t_stack *tmp;
-	t_stack *curnt;
-	
-	curnt = *a;
-	tmp = ft_lstlast(*a);
-	while (curnt->next->next)
-		curnt = curnt->next;
-	curnt->next = NULL;
-	ft_lstadd_front(a, tmp);
-	write(1, "rra\n", 4);
-}
-
-void	rrb(t_stack **b)
-{
-	t_stack *tmp;
-	t_stack *curnt;
-	
-	curnt = *b;
-	tmp = ft_lstlast(*b);
-	while (curnt->next->next)
-		curnt = curnt->next;
-	curnt->next = NULL;
-	ft_lstadd_front(b, tmp);
-	write(1, "rrb\n", 4);
-}
-
-void	pb(t_stack **a, t_stack **b)
-{
-	t_stack *tmp;
-
-	tmp = *a;
-	*a = (*a)->next;
-	ft_lstadd_front(b, tmp);
-	write(1, "pb\n", 3);
-}
-
-void	pa(t_stack **a, t_stack **b)
-{
-	t_stack *tmp;
-
-	tmp = *b;
-	*b = (*b)->next;
-	ft_lstadd_front(a, tmp);
-	write(1, "pa\n", 3);
-}
-
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rra(a);
-	rrb(b);
-	write(1, "rrr\n", 4);
-}
-
-void	rr(t_stack **a, t_stack **b)
-{
-	ra(a);
-	rb(b);
-	write(1, "rr\n", 3);
-}
-
 int	main(int ac, char **av)
 {
 	char		*agv;
@@ -233,6 +60,7 @@ int	main(int ac, char **av)
 	t_stack		*b;
 
 	a = NULL;
+	b = NULL;
 	i = 1;
 	if (ac == 1)
 		return (1);
@@ -253,25 +81,43 @@ int	main(int ac, char **av)
 			stack_clear(&a);
 			return (write(2, "Error", 5));
 		}
+		free(av[i]);
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
 		i++;
 	}
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	pb(&a, &b);
-	pa(&a, &b);
-	while (a)
+	free(av);
+	if (i == 2 && (a->content > a->next->content))
+		sa(a);
+	if (i == 3 && !(a->content < a->next->content && a->next->content < a->next->next->content))
 	{
-		printf("%d\n", a->content);
-		// while(1);
-		a = a->next;
+		if (a->content < a->next->content && a->next->content > a->next->next->content)
+		{
+			sa(a);
+			ra(&a);
+		}
+		else if (a->content > a->next->content && a->next->content > a->next->next->content)
+		{
+			sa(a);
+			rra(&a);
+		}
+		else
+			sa(a);
 	}
-	while(b)
+	t_stack *tmp = a;
+	while (tmp)
 	{
-		printf("b=%d\n", b->content);
-		// while(1);
-		b = b->next;
+		printf("%d\n", tmp->content);
+		
+		tmp = tmp->next;
 	}
+	stack_clear(&a);
+	// while(b)
+	// {
+	// 	printf("b=%d\n", b->content);
+	// 	// while(1);
+	// 	b = b->next;
+	// }
+	system("leaks push_swap");
+	// exit(1);
 	return (0);
 }

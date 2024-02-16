@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/14 06:39:25 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/16 02:07:26 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,27 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_stack;
 
-int					ft_atoi(const char *str);
-char				*ft_strdup(const char *s1);
-size_t				ft_strlen(const char *s);
-char				*ft_substr(char const *s, unsigned int start, size_t len);
-char				**ft_split(char const *s, char c);
-char				*ft_strjoin(char const *s1, char const *s2);
+t_stack	*ft_lstlast(t_stack *lst);
+void	ft_lstadd_back(t_stack **lst, t_stack *new);
+t_stack	*ft_lstnew(int content);
+void	stack_clear(t_stack **lst);
+void	ft_lstadd_front(t_stack **lst, t_stack *new);
+void	sa(t_stack *a);
+void	sb(t_stack *b);
+void	ss(t_stack *a, t_stack *b);
+void	ra(t_stack **a);
+void	rb(t_stack **b);
+void	rra(t_stack **a);
+void	rrb(t_stack **b);
+void	pb(t_stack **a, t_stack **b);
+void	pa(t_stack **a, t_stack **b);
+void	rrr(t_stack **a, t_stack **b);
+void	rr(t_stack **a, t_stack **b);
+
+int		ft_atoi(const char *str);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlen(const char *s);
+char	**ft_split(char const *s, char c);
+char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif
