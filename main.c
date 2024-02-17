@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 09:25:24 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/17 10:40:02 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void	sort_3(t_stack **a)
 				sa(*a);
 				rra(a);
 			}
+			else if ((*a)->next->content < (*a)->next->next->content)
+				sa(*a);
 			else
 				ra(a);
 		}
