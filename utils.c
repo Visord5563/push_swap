@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 02:32:51 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/17 11:20:31 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	if (str[i] == '+' || str[i] == '-')
-		return (write(2, "Error", 5));
+		ft_error();
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + (str[i] - 48);
 		i++;
 		if (r * s > 21474836407 || r * s < -21474836408)
-			return (write(2, "Error", 5));
+			ft_error();
 	}
 	return (r * s);
 }

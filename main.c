@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/17 10:40:02 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/17 11:24:33 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ void	sort_3(t_stack **a)
 {
 	if (!((*a)->content < (*a)->next->content && (*a)->next->content < (*a)->next->next->content))
 	{
-		if ((*a)->content < (*a)->next->content && (*a)->next->content > (*a)->next->next->content)
+		if ((*a)->content < (*a)->next->content )
 		{
-			if ((*a)->content < (*a)->next->content && (*a)->content < (*a)->next->next->content)
+			if ((*a)->content < (*a)->next->next->content)
 			{
 				sa(*a);
 				ra(a);
@@ -73,14 +73,18 @@ void	sort_3(t_stack **a)
 				sa(*a);
 				rra(a);
 			}
-			else if ((*a)->next->content < (*a)->next->next->content)
-				sa(*a);
-			else
+			else if ((*a)->content > (*a)->next->next->content)
 				ra(a);
+			else
+				sa(*a);
 		}
-		else
-			sa(*a);
 	}
+}
+
+void	ft_error()
+{
+	write(2, "Error", 5);
+	exit(0);
 }
 
 int	main(int ac, char **av)
@@ -98,7 +102,7 @@ int	main(int ac, char **av)
 	while (av[i])
 	{
 		if (ft_chek(av[i]) == 0)
-			return (write(2, "Error", 5));
+			ft_error();
 		agv = ft_strjoin(agv, av[i]);
 		i++;
 	}
@@ -110,7 +114,7 @@ int	main(int ac, char **av)
 		if (stack_chek(a, ft_atoi(av[i])) == 1)
 		{
 			stack_clear(&a);
-			return (write(2, "Error", 5));
+			ft_error();
 		}
 		free(av[i]);
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
@@ -123,12 +127,10 @@ int	main(int ac, char **av)
 	{
 		sort_3(&a);
 	}
-	t_stack *tmp = a;
-	while (tmp)
+	while(a)
 	{
-		printf("%d\n", tmp->content);
-		
-		tmp = tmp->next;
+		printf("%d\n",a->content);
+		a = a->next;
 	}
 	stack_clear(&a);
 	// while(b)
