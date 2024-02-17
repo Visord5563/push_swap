@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/17 11:24:33 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/17 11:41:03 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,13 +133,5 @@ int	main(int ac, char **av)
 		a = a->next;
 	}
 	stack_clear(&a);
-	// while(b)
-	// {
-	// 	printf("b=%d\n", b->content);
-	// 	// while(1);
-	// 	b = b->next;
-	// }
-	// system("leaks push_swap");
-	// exit(1);
 	return (0);
 }
