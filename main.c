@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/17 11:41:03 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:25:05 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int	stack_chek(t_stack *a, int at_oi)
 
 void	sort_3(t_stack **a)
 {
-	if (!((*a)->content < (*a)->next->content && (*a)->next->content < (*a)->next->next->content))
-	{
 		if ((*a)->content < (*a)->next->content )
 		{
 			if ((*a)->content < (*a)->next->next->content)
@@ -78,13 +76,23 @@ void	sort_3(t_stack **a)
 			else
 				sa(*a);
 		}
-	}
 }
 
 void	ft_error()
 {
 	write(2, "Error", 5);
 	exit(0);
+}
+
+int cheksort(t_stack *a)
+{
+	while (a->next)
+	{
+		if (a->content > a->next->content)
+			return (1);
+		a = a->next;
+	}
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -121,15 +129,38 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(av);
-	if (i == 2 && (a->content > a->next->content))
+	// t_stack *tmp = a;
+	// t_stack *min = a;
+	// int j = 1;
+	// while (tmp)
+	// {
+	// 	t_stack *pmt = a;
+	// 	while (pmt->next)
+	// 	{
+	// 		if (tmp->content >= pmt->content && pmt->index == -1)
+	// 		{
+	// 			min = pmt;
+	// 		}
+	// 		pmt = pmt->next;
+	// 	}
+	// 	min->index = j;
+	// 	printf("min->%d\n", min->content);
+	// 	j++;
+	// 	tmp = tmp->next;
+	// }
+	if (i == 2 && cheksort(a) == 1)
 		sa(a);
-	if (i == 3)
-	{
+	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
+	t_stack *tmp = a;
+	while (tmp)
+	{
+		
+		tmp = tmp->next;
 	}
 	while(a)
 	{
-		printf("%d\n",a->content);
+		printf("%d index%d\n",a->content, a->index);
 		a = a->next;
 	}
 	stack_clear(&a);

@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:54:29 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 01:56:16 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:42:33 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ t_stack	*ft_lstnew(int content)
 	if (!list)
 		return (NULL);
 	list->content = content;
+	list->index = -1;
 	list->next = NULL;
 	return (list);
 }
