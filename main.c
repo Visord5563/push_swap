@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/18 19:13:44 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:19:22 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ int get_getmin(t_stack *a)
 	int min  =0;
 	while(a && a->next)
 	{
-		if(a->content < a->next->content && a->content < min)
+		if(a->content < a->next->content && a->content < min && a->index == -1)
 			min = a->content;
 		a = a->next;
 	}
@@ -107,6 +107,22 @@ int get_getmin(t_stack *a)
 			min = a->content;
 	return min;
 }
+int index_all_items(t_stack *a)
+{
+	int o = 0;
+	int min = get_getmin(a);
+	
+	while(a)
+	{
+		o++;
+		if(a->content == min)
+			a->index = o;
+
+		a = a->next;	
+	}
+	return EXIT_SUCCESS;
+}
+
 
 int get_min_position(t_stack *a)
 {
@@ -179,8 +195,12 @@ int	main(int ac, char **av)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
-	int o = get_min_position(a);
-	printf("%d\n",o);
+	index_all_items(a);
+	while(a)
+	{
+		printf("%d\n",a->index);
+		a = a->next;
+	}
 	// while(a)
 	// {
 	// 	a = a->next;
