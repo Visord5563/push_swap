@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/18 19:19:22 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/18 20:30:25 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,28 +96,52 @@ int cheksort(t_stack *a)
 }
 int get_getmin(t_stack *a)
 {
-	int min  =0;
-	while(a && a->next)
+	int min = a->content;
+	// printf("%d\n", min);
+	int i = 0;
+	while(a)
 	{
-		if(a->content < a->next->content && a->content < min && a->index == -1)
+		if(a->content < min && a->index == -1){	
 			min = a->content;
+		}
 		a = a->next;
 	}
-	if(a->content < min)
-			min = a->content;
 	return min;
+}
+int	ft_lstsize(t_stack *lst)
+{
+	t_stack	*newlst;
+	int		i;
+
+	if (!lst)
+		return (0);
+	i = 0;
+	newlst = lst;
+	while (newlst != NULL)
+	{
+		i++;
+		newlst = newlst->next;
+	}
+	return (i);
 }
 int index_all_items(t_stack *a)
 {
 	int o = 0;
-	int min = get_getmin(a);
+	int min ;
+	t_stack * tmp = a;
+	min = tmp->content;
 	
 	while(a)
 	{
-		o++;
-		if(a->content == min)
-			a->index = o;
-
+		min = get_getmin(tmp);
+		if(tmp->content == min && tmp->index == -1)
+			tmp->index = o++;
+		min = get_getmin(a);
+		if(a->content == min && a->index == -1)
+		{
+			a->index = o++;
+			a = tmp;
+		}
 		a = a->next;	
 	}
 	return EXIT_SUCCESS;
@@ -195,16 +219,16 @@ int	main(int ac, char **av)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
-	index_all_items(a);
-	while(a)
+	t_stack *tmp = a;
+
+	while(tmp)
 	{
-		printf("%d\n",a->index);
-		a = a->next;
+		index_all_items(tmp);
+		printf("%d\n",tmp->index);	
+		// get_getmin(tmp);
+		tmp = tmp->next;
 	}
-	// while(a)
-	// {
-	// 	a = a->next;
-	// }
+
 	// stack_clear(&a);
 	return (0);
 }
