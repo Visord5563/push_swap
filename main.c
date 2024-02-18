@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/18 16:59:53 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/18 19:13:44 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,34 @@ int cheksort(t_stack *a)
 	}
 	return (0);
 }
+int get_getmin(t_stack *a)
+{
+	int min  =0;
+	while(a && a->next)
+	{
+		if(a->content < a->next->content && a->content < min)
+			min = a->content;
+		a = a->next;
+	}
+	if(a->content < min)
+			min = a->content;
+	return min;
+}
+
+int get_min_position(t_stack *a)
+{
+	int min = get_getmin(a);
+	int pos = 0;
+	while(a)
+	{
+		pos++;
+		if(a->content == min)
+			return pos;
+		
+		a = a->next;
+	}
+	return -1;
+}
 
 int	main(int ac, char **av)
 {
@@ -129,39 +157,34 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(av);
-	t_stack *tmp = a;
-	t_stack *min = a;
-	int j = 1;
-	while (tmp)
-	{
-		t_stack *pmt = a;
-		while (pmt->next)
-		{
-			if (tmp->content >= pmt->content && pmt->index == -1)
-			{
-				j++;
-				min = pmt;
-			}
-			pmt = pmt->next;
-		}
-		min->index = j;
-		printf("min->%d\n", min->content);
-		tmp = tmp->next;
-	}
+	// t_stack *min = a;
+	// while (tmp)
+	// {
+	// 	t_stack *pmt = tmp;
+	// 	while (pmt)
+	// 	{
+	// 		if (tmp->content > pmt->content && pmt->index == -1)
+	// 		{
+	// 			min = pmt;
+	// 		}
+	// 		printf("pmt->%d tmp->%d min->%d\n", pmt->content, tmp->content, min->content);
+	// 		pmt = pmt->next;
+	// 	}
+	// 	min->index = j;
+	// 	printf("\nmin->index %d\n", min->index);
+	// 	j++;
+	// 	tmp = tmp->next;
+	// }
 	if (i == 2 && cheksort(a) == 1)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
-	// while (tmp)
+	int o = get_min_position(a);
+	printf("%d\n",o);
+	// while(a)
 	// {
-	// 	if ()
-	// 	tmp = tmp->next;
+	// 	a = a->next;
 	// }
-	while(a)
-	{
-		printf("%d index%d\n",a->content, a->index);
-		a = a->next;
-	}
-	stack_clear(&a);
+	// stack_clear(&a);
 	return (0);
 }
