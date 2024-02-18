@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/18 16:25:05 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/18 16:59:53 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,35 +129,34 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(av);
-	// t_stack *tmp = a;
-	// t_stack *min = a;
-	// int j = 1;
-	// while (tmp)
-	// {
-	// 	t_stack *pmt = a;
-	// 	while (pmt->next)
-	// 	{
-	// 		if (tmp->content >= pmt->content && pmt->index == -1)
-	// 		{
-	// 			min = pmt;
-	// 		}
-	// 		pmt = pmt->next;
-	// 	}
-	// 	min->index = j;
-	// 	printf("min->%d\n", min->content);
-	// 	j++;
-	// 	tmp = tmp->next;
-	// }
+	t_stack *tmp = a;
+	t_stack *min = a;
+	int j = 1;
+	while (tmp)
+	{
+		t_stack *pmt = a;
+		while (pmt->next)
+		{
+			if (tmp->content >= pmt->content && pmt->index == -1)
+			{
+				j++;
+				min = pmt;
+			}
+			pmt = pmt->next;
+		}
+		min->index = j;
+		printf("min->%d\n", min->content);
+		tmp = tmp->next;
+	}
 	if (i == 2 && cheksort(a) == 1)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
-	t_stack *tmp = a;
-	while (tmp)
-	{
-		
-		tmp = tmp->next;
-	}
+	// while (tmp)
+	// {
+	// 	if ()
+	// 	tmp = tmp->next;
+	// }
 	while(a)
 	{
 		printf("%d index%d\n",a->content, a->index);
