@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:49:48 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/16 01:50:21 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/19 16:44:02 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,20 @@ void ra(t_stack **a)
 	tmp->next = NULL;
 	write(1, "ra\n", 3);
 }
+
+// void    ra(t_stack **a, int flag)
+// {
+//     t_stack    *tmp;
+
+//     if (!(*a) || !(*a)->next)
+//         return ;
+//     tmp = *a;
+//     *a = (*a)->next;
+//     tmp ->next = NULL;
+//     ft_lstadd_back (a, tmp);
+//     if (flag == 0)
+//         write(1, "ra\n", 3);
+// }
 
 void rb(t_stack **b)
 {

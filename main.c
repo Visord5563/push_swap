@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 15:21:49 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:58:41 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,22 +95,22 @@ int cheksort(t_stack *a)
 	return (0);
 }
 
-// int	ft_lstsize(t_stack *lst)
-// {
-// 	t_stack	*newlst;
-// 	int		i;
+int	ft_lstsize(t_stack *lst)
+{
+	t_stack	*newlst;
+	int		i;
 
-// 	if (!lst)
-// 		return (0);
-// 	i = 0;
-// 	newlst = lst;
-// 	while (newlst != NULL)
-// 	{
-// 		i++;
-// 		newlst = newlst->next;
-// 	}
-// 	return (i);
-// }
+	if (!lst)
+		return (0);
+	i = 0;
+	newlst = lst;
+	while (newlst != NULL)
+	{
+		i++;
+		newlst = newlst->next;
+	}
+	return (i);
+}
 
 int get_index(t_stack *tmp, int content)
 {
@@ -134,6 +134,47 @@ void index_node(t_stack *a)
 		printf("tmp->indiex %d  %d\n",tmp->index, tmp->content);	
 		tmp = tmp->next;
 	}
+}
+
+void sort_4(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->index == 1)
+			break;
+		else if (ft_lstlast(*a)->index == 1)
+			rra(a);
+		else
+			ra(a);
+		tmp = *a;
+	}
+	pb(a, b);
+	sort_3(a);
+	pa(a, b);
+}
+
+void sort_5(t_stack **a, t_stack **b)
+{
+	t_stack *tmp;
+
+	tmp = *a;
+	while (tmp)
+	{
+		if (tmp->index == 2)
+			break;
+		else if (ft_lstlast(*a)->index == 2)
+			rra(a);
+		else
+			ra(a);
+		tmp = *a;
+	}
+	pb(a, b);
+	sort_4(a, b);
+	pa(a, b);
+	sa(*a);
 }
 
 int	main(int ac, char **av)
@@ -171,10 +212,22 @@ int	main(int ac, char **av)
 	}
 	free(av);
 	index_node(a);
-	if (i == 2 && cheksort(a) == 1)
+	if (cheksort(a) == 0)
+		exit(1);
+	if (i == 2)
 		sa(a);
-	if (i == 3 && cheksort(a) == 1)
+	if (i == 3)
 		sort_3(&a);
+	if (i == 4)
+		sort_4(&a, &b);
+	if (i == 5)
+		sort_5(&a, &b);
+	while (a)
+	{
+		printf("%d\n", a->content);
+		a = a->next;
+	// printf("hhh\n");
+	}
 	// stack_clear(&a);
 	return (0);
 }
