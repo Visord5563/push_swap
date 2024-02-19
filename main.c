@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 15:08:19 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:17:14 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,9 @@ int cheksort(t_stack *a)
 // 	return (i);
 // }
 
-int index(t_stack *tmp, int content)
+int get_index(t_stack *tmp, int content)
 {
-	int	i = 1;
+	int	i = 0;
 
 	while (tmp)
 	{
@@ -162,8 +162,8 @@ int	main(int ac, char **av)
 	t_stack *tmp = a;
 	while(tmp)
 	{
-		tmp->index = index(a, tmp->content);
-		printf("tmp->indiex %d\n",tmp->index);	
+		tmp->index = get_index(a, tmp->content);
+		printf("tmp->indiex %d  %d\n",tmp->index, tmp->content);	
 		tmp = tmp->next;
 	}
 	if (i == 2 && cheksort(a) == 1)
