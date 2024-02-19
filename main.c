@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/18 20:30:25 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:08:19 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,73 +94,35 @@ int cheksort(t_stack *a)
 	}
 	return (0);
 }
-int get_getmin(t_stack *a)
-{
-	int min = a->content;
-	// printf("%d\n", min);
-	int i = 0;
-	while(a)
-	{
-		if(a->content < min && a->index == -1){	
-			min = a->content;
-		}
-		a = a->next;
-	}
-	return min;
-}
-int	ft_lstsize(t_stack *lst)
-{
-	t_stack	*newlst;
-	int		i;
 
-	if (!lst)
-		return (0);
-	i = 0;
-	newlst = lst;
-	while (newlst != NULL)
+// int	ft_lstsize(t_stack *lst)
+// {
+// 	t_stack	*newlst;
+// 	int		i;
+
+// 	if (!lst)
+// 		return (0);
+// 	i = 0;
+// 	newlst = lst;
+// 	while (newlst != NULL)
+// 	{
+// 		i++;
+// 		newlst = newlst->next;
+// 	}
+// 	return (i);
+// }
+
+int index(t_stack *tmp, int content)
+{
+	int	i = 1;
+
+	while (tmp)
 	{
-		i++;
-		newlst = newlst->next;
+		if (tmp->content <= content)
+			i++;
+		tmp = tmp->next;
 	}
 	return (i);
-}
-int index_all_items(t_stack *a)
-{
-	int o = 0;
-	int min ;
-	t_stack * tmp = a;
-	min = tmp->content;
-	
-	while(a)
-	{
-		min = get_getmin(tmp);
-		if(tmp->content == min && tmp->index == -1)
-			tmp->index = o++;
-		min = get_getmin(a);
-		if(a->content == min && a->index == -1)
-		{
-			a->index = o++;
-			a = tmp;
-		}
-		a = a->next;	
-	}
-	return EXIT_SUCCESS;
-}
-
-
-int get_min_position(t_stack *a)
-{
-	int min = get_getmin(a);
-	int pos = 0;
-	while(a)
-	{
-		pos++;
-		if(a->content == min)
-			return pos;
-		
-		a = a->next;
-	}
-	return -1;
 }
 
 int	main(int ac, char **av)
@@ -197,38 +159,17 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(av);
-	// t_stack *min = a;
-	// while (tmp)
-	// {
-	// 	t_stack *pmt = tmp;
-	// 	while (pmt)
-	// 	{
-	// 		if (tmp->content > pmt->content && pmt->index == -1)
-	// 		{
-	// 			min = pmt;
-	// 		}
-	// 		printf("pmt->%d tmp->%d min->%d\n", pmt->content, tmp->content, min->content);
-	// 		pmt = pmt->next;
-	// 	}
-	// 	min->index = j;
-	// 	printf("\nmin->index %d\n", min->index);
-	// 	j++;
-	// 	tmp = tmp->next;
-	// }
+	t_stack *tmp = a;
+	while(tmp)
+	{
+		tmp->index = index(a, tmp->content);
+		printf("tmp->indiex %d\n",tmp->index);	
+		tmp = tmp->next;
+	}
 	if (i == 2 && cheksort(a) == 1)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
 		sort_3(&a);
-	t_stack *tmp = a;
-
-	while(tmp)
-	{
-		index_all_items(tmp);
-		printf("%d\n",tmp->index);	
-		// get_getmin(tmp);
-		tmp = tmp->next;
-	}
-
 	// stack_clear(&a);
 	return (0);
 }
