@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 15:17:14 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:21:49 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,17 @@ int get_index(t_stack *tmp, int content)
 	return (i);
 }
 
+void index_node(t_stack *a)
+{
+	t_stack *tmp = a;
+	while(tmp)
+	{
+		tmp->index = get_index(a, tmp->content);
+		printf("tmp->indiex %d  %d\n",tmp->index, tmp->content);	
+		tmp = tmp->next;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	char		*agv;
@@ -159,13 +170,7 @@ int	main(int ac, char **av)
 		i++;
 	}
 	free(av);
-	t_stack *tmp = a;
-	while(tmp)
-	{
-		tmp->index = get_index(a, tmp->content);
-		printf("tmp->indiex %d  %d\n",tmp->index, tmp->content);	
-		tmp = tmp->next;
-	}
+	index_node(a);
 	if (i == 2 && cheksort(a) == 1)
 		sa(a);
 	if (i == 3 && cheksort(a) == 1)
