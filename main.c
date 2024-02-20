@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 18:58:41 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/20 20:36:34 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int get_index(t_stack *tmp, int content)
 
 	while (tmp)
 	{
-		if (tmp->content <= content)
+		if (tmp->content < content)
 			i++;
 		tmp = tmp->next;
 	}
@@ -130,8 +130,7 @@ void index_node(t_stack *a)
 	t_stack *tmp = a;
 	while(tmp)
 	{
-		tmp->index = get_index(a, tmp->content);
-		printf("tmp->indiex %d  %d\n",tmp->index, tmp->content);	
+		tmp->index = get_index(a, tmp->content);	
 		tmp = tmp->next;
 	}
 }
@@ -177,6 +176,35 @@ void sort_5(t_stack **a, t_stack **b)
 	sa(*a);
 }
 
+void	sortall(t_stack **a, t_stack **b)
+{
+	int p1;
+	int p2;
+
+	p2 = 0;
+	while (ft_lstsize(*a) > 3)
+	{
+		p1 = ft_lstsize(*a)/6 + p2;
+		p2 = ft_lstsize(*a)/3 + p2;
+		while (a && p2 > ft_lstsize(*b))
+		{
+			
+			if ((*a)->index < p2)
+			{
+				pb(a, b);
+				if ((*b)->index < p1 && ft_lstsize(*b) > 1)
+					rb(b);
+			}
+			else
+				ra(a);
+			// (*b) = (*b);
+			(*a) = (*a);
+		}
+	}
+	if (cheksort(*a) == 1)
+		sort_3(a);
+}
+
 int	main(int ac, char **av)
 {
 	char		*agv;
@@ -220,14 +248,22 @@ int	main(int ac, char **av)
 		sort_3(&a);
 	if (i == 4)
 		sort_4(&a, &b);
-	if (i == 5)
+	if (i == 5)                          
 		sort_5(&a, &b);
-	while (a)
-	{
-		printf("%d\n", a->content);
-		a = a->next;
-	// printf("hhh\n");
-	}
+	if (i > 5)
+		sortall(&a, &b);
+	// while (a)
+	// {
+	// 	printf("a-----|%d\n", a->content);
+	// 	a = a->next;
+	// // printf("hhh\n");
+	// }
+	// while (b)
+	// {
+	// 	printf("b----|%d\n", b->content);
+	// 	b = b->next;
+	// // printf("hhh\n");
+	// }
 	// stack_clear(&a);
 	return (0);
 }

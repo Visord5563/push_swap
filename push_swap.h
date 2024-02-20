@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 16:44:30 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:50:01 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ft_lstadd_back(t_stack **lst, t_stack *new);
 t_stack	*ft_lstnew(int content);
 void	stack_clear(t_stack **lst);
 void	ft_lstadd_front(t_stack **lst, t_stack *new);
+int		ft_lstsize(t_stack *lst);
 void	sa(t_stack *a);
 void	sb(t_stack *b);
 void	ss(t_stack *a, t_stack *b);

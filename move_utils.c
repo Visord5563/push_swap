@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:49:48 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 16:44:02 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:53:48 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void ra(t_stack **a)
 	t_stack	*tmp;
 	t_stack	*curnt;
 
+	if (ft_lstsize(*a) == 0)
+		return ;
 	tmp = *a;
 	curnt = ft_lstlast(*a);
 	curnt->next = tmp;
@@ -52,25 +54,14 @@ void ra(t_stack **a)
 	write(1, "ra\n", 3);
 }
 
-// void    ra(t_stack **a, int flag)
-// {
-//     t_stack    *tmp;
-
-//     if (!(*a) || !(*a)->next)
-//         return ;
-//     tmp = *a;
-//     *a = (*a)->next;
-//     tmp ->next = NULL;
-//     ft_lstadd_back (a, tmp);
-//     if (flag == 0)
-//         write(1, "ra\n", 3);
-// }
 
 void rb(t_stack **b)
 {
 	t_stack	*tmp;
 	t_stack	*curnt;
 
+	if (ft_lstsize(*b) == 0)
+		return ;
 	tmp = *b;
 	curnt = ft_lstlast(*b);
 	curnt->next = tmp;
