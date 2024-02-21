@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/21 22:04:03 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/21 23:16:10 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,12 +179,15 @@ void sort_5(t_stack **a, t_stack **b)
 int chekp(t_stack *b, int index)
 {
 	int	p;
-	
+	int s;
+	t_stack *cur = b;
 	p = 0;
-	while (p < ft_lstsize(b)/2)
+	s = ft_lstsize(b)/2 ;
+	while (p < s)
 	{
-		if (b->index == index)
+		if (cur->index == index)
 			return (1);
+		cur = cur->next;
 		p++;
 	}
 	return (0);
@@ -233,6 +236,17 @@ void	sortall(t_stack **a, t_stack **b)
 			pa(a, b);
 			ra(a);
 		}
+		else if (ft_lstlast(*a)->index < (*b)->index)
+		{
+			pa(a, b);
+			ra(a);
+		}
+		else if ( ft_lstlast(*a)->index < ft_lstlast(*b)->index)
+		{
+			rrb(b);
+			pa(a, b);
+			ra(a);
+		}
 		else if (ft_lstlast(*a)->index == ((*a)->index - 1))
 			rra(a);
 		else if (chekp(*b, ((*a)->index - 1)) == 1)
@@ -240,8 +254,6 @@ void	sortall(t_stack **a, t_stack **b)
 		else
 			rrb(b);
 	}
-	if (ft_lstlast(*a)->index != biggindex)
-			rra(a);
 }
 
 void f()
@@ -298,6 +310,6 @@ int	main(int ac, char **av)
 		sortall(&a, &b);
 	stack_clear(&a);
 	// stack_clear(&b);
-	atexit(f);
+	// atexit(f);
 	return (0);
 }
