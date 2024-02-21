@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/20 20:36:34 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:04:03 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort_3(t_stack **a)
 		{
 			if ((*a)->content < (*a)->next->next->content)
 			{
-				sa(*a);
+				sa(a);
 				ra(a);
 			}
 			else
@@ -68,13 +68,13 @@ void	sort_3(t_stack **a)
 		{
 			if ((*a)->next->content > (*a)->next->next->content)
 			{
-				sa(*a);
+				sa(a);
 				rra(a);
 			}
 			else if ((*a)->content > (*a)->next->next->content)
 				ra(a);
 			else
-				sa(*a);
+				sa(a);
 		}
 }
 
@@ -130,7 +130,7 @@ void index_node(t_stack *a)
 	t_stack *tmp = a;
 	while(tmp)
 	{
-		tmp->index = get_index(a, tmp->content);	
+		tmp->index = get_index(a, tmp->content);
 		tmp = tmp->next;
 	}
 }
@@ -173,7 +173,21 @@ void sort_5(t_stack **a, t_stack **b)
 	pb(a, b);
 	sort_4(a, b);
 	pa(a, b);
-	sa(*a);
+	sa(a);
+}
+
+int chekp(t_stack *b, int index)
+{
+	int	p;
+	
+	p = 0;
+	while (p < ft_lstsize(b)/2)
+	{
+		if (b->index == index)
+			return (1);
+		p++;
+	}
+	return (0);
 }
 
 void	sortall(t_stack **a, t_stack **b)
@@ -197,12 +211,42 @@ void	sortall(t_stack **a, t_stack **b)
 			}
 			else
 				ra(a);
-			// (*b) = (*b);
 			(*a) = (*a);
 		}
 	}
 	if (cheksort(*a) == 1)
 		sort_3(a);
+	int biggindex = ft_lstlast(*a)->index;
+	while (ft_lstsize(*b) != 0)
+	{
+		if ((*b)->index == ((*a)->index - 1))
+		{
+			pa(a, b);
+		}
+		else if (ft_lstlast(*b)->index == ((*a)->index - 1))
+		{
+			rrb(b);
+			pa(a, b);
+		}
+		else if (ft_lstlast(*a)->index == biggindex)
+		{
+			pa(a, b);
+			ra(a);
+		}
+		else if (ft_lstlast(*a)->index == ((*a)->index - 1))
+			rra(a);
+		else if (chekp(*b, ((*a)->index - 1)) == 1)
+			rb(b);
+		else
+			rrb(b);
+	}
+	if (ft_lstlast(*a)->index != biggindex)
+			rra(a);
+}
+
+void f()
+{
+	system ("leaks push_swap");
 }
 
 int	main(int ac, char **av)
@@ -243,7 +287,7 @@ int	main(int ac, char **av)
 	if (cheksort(a) == 0)
 		exit(1);
 	if (i == 2)
-		sa(a);
+		sa(&a);
 	if (i == 3)
 		sort_3(&a);
 	if (i == 4)
@@ -252,18 +296,8 @@ int	main(int ac, char **av)
 		sort_5(&a, &b);
 	if (i > 5)
 		sortall(&a, &b);
-	// while (a)
-	// {
-	// 	printf("a-----|%d\n", a->content);
-	// 	a = a->next;
-	// // printf("hhh\n");
-	// }
-	// while (b)
-	// {
-	// 	printf("b----|%d\n", b->content);
-	// 	b = b->next;
-	// // printf("hhh\n");
-	// }
-	// stack_clear(&a);
+	stack_clear(&a);
+	// stack_clear(&b);
+	atexit(f);
 	return (0);
 }

@@ -6,36 +6,39 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:49:48 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/20 18:53:48 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:49:55 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sa(t_stack *a)
+void 	swap(int *a, int *b)
 {
-	int	tmp;
+	int	c;
 
-	tmp = a->content;
-	a->content = a->next->content;
-	a->next->content = tmp;
+	c = *a;
+	*a = *b;
+	*b = c;
+}
+
+void	sa(t_stack **a)
+{
+	swap(&(*a)->content, &(*a)->next->content);
+	swap(&(*a)->index, &(*a)->next->index);
 	write(1, "sa\n", 3);
 }
 
-void	sb(t_stack *b)
+void	sb(t_stack **b)
 {
-	int	tmp;
-
-	tmp = b->content;
-	b->content = b->next->content;
-	b->next->content = tmp;
+	swap(&(*b)->content, &(*b)->next->content);
+	swap(&(*b)->index, &(*b)->next->index);
 	write(1, "sb\n", 3);
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
-	sa(a);
-	sb(b);
+	sa(&a);
+	sb(&b);
 	write(1, "ss\n", 3);
 }
 
