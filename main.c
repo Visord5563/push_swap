@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/21 23:16:10 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:03:40 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,9 +142,9 @@ void sort_4(t_stack **a, t_stack **b)
 	tmp = *a;
 	while (tmp)
 	{
-		if (tmp->index == 1)
+		if (tmp->index == 0)
 			break;
-		else if (ft_lstlast(*a)->index == 1)
+		else if (ft_lstlast(*a)->index == 0)
 			rra(a);
 		else
 			ra(a);
@@ -162,9 +162,9 @@ void sort_5(t_stack **a, t_stack **b)
 	tmp = *a;
 	while (tmp)
 	{
-		if (tmp->index == 2)
+		if (tmp->index == 1)
 			break;
-		else if (ft_lstlast(*a)->index == 2)
+		else if (ft_lstlast(*a)->index == 1)
 			rra(a);
 		else
 			ra(a);
