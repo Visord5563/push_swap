@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/22 23:07:59 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 00:10:15 by macair           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,28 +57,27 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 	size_t	i;
 	size_t	j;
-
-	if (!s2)
-		return (NULL);
-	if (!s1)
-		return (ft_strdup(s2));
+	
+	if(!s1)
+		return(ft_strdup(""));
+	len = ft_strlen(s1) + ft_strlen(s2);
+	nstr = (char *)malloc(sizeof(char) * len + 1);
 	i = 0;
-	len = ft_strlen(s1) + ft_strlen(s2) + 2;
-	nstr = (char *)malloc(sizeof(char) * len);
-	if (!nstr)
-		return (NULL);
-	while (s1[i] != '\0')
+	while(s1[i])
 	{
 		nstr[i] = s1[i];
 		i++;
 	}
-	nstr[i++] = ' ';
 	j = 0;
-	while (s2[j] != '\0')
-		nstr[i++] = s2[j++];
-	nstr[i++] = '\0';
-	free((char *)s1);
-	return (nstr);
+	while(s2[j])
+	{
+		nstr[i] = s2[j];
+		i++;
+		j++;
+	}
+	nstr[i] = '\0';
+	return(nstr);
+	
 }
 
 int	ft_atoi(const char *str)

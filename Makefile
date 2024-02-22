@@ -1,7 +1,6 @@
 NAME = push_swap
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address
-
+CFLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 
 SRCM = main.c utils.c move_utils.c move_utils1.c ft_split.c linkedlist.c utilsnorminit.c sort.c
