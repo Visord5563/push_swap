@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:52:18 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/19 16:45:14 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:10:26 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,6 @@ void	pa(t_stack **a, t_stack **b)
 	*b = (*b)->next;
 	ft_lstadd_front(a, tmp);
 	write(1, "pa\n", 3);
-}
-
-
-void	rrr(t_stack **a, t_stack **b)
-{
-	rra(a);
-	rrb(b);
-	write(1, "rrr\n", 4);
 }
 
 void	rr(t_stack **a, t_stack **b)

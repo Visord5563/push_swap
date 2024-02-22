@@ -6,20 +6,11 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:49:48 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/21 21:49:55 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/22 20:05:24 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void 	swap(int *a, int *b)
-{
-	int	c;
-
-	c = *a;
-	*a = *b;
-	*b = c;
-}
 
 void	sa(t_stack **a)
 {

@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/21 20:37:13 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/22 21:41:54 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,14 @@ size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_error();
+void	swap(int *a, int *b);
+int		stack_chek(t_stack *a, int at_oi);
+int		ft_lstsize(t_stack *lst);
+int		cheksort(t_stack *a);
+void	sort_3(t_stack **a);
+void	sort_4(t_stack **a, t_stack **b);
+void	sort_5(t_stack **a, t_stack **b);
+void	sortall(t_stack **a, t_stack **b);
+int		chekp(t_stack *b, int index);
 
 #endif

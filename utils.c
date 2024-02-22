@@ -6,11 +6,20 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/17 11:20:31 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/22 23:07:59 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void 	swap(int *a, int *b)
+{
+	int	c;
+
+	c = *a;
+	*a = *b;
+	*b = c;
+}
 
 size_t	ft_strlen(const char *s)
 {
