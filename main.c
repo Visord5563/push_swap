@@ -6,15 +6,11 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 13:24:20 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:46:35 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void f(){
-// 	system("leaks push_swap");
-// }
 
 int	ft_chek(char *av)
 {
