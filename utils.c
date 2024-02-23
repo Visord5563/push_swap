@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
+/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 00:30:20 by macair           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:33:20 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void 	swap(int *a, int *b)
+void	swap(int *a, int *b)
 {
 	int	c;
 
@@ -57,19 +57,19 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 	size_t	i;
 	size_t	j;
-	
-	if(!s1)
-		return(ft_strdup(""));
+
+	if (!s1)
+		return (ft_strdup(""));
 	len = ft_strlen(s1) + ft_strlen(s2);
 	nstr = (char *)malloc(sizeof(char) * len + 1);
 	i = 0;
-	while(s1[i])
+	while (s1[i])
 	{
 		nstr[i] = s1[i];
 		i++;
 	}
 	j = 0;
-	while(s2[j])
+	while (s2[j])
 	{
 		nstr[i] = s2[j];
 		i++;
@@ -77,8 +77,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	nstr[i] = '\0';
 	free((char *)s1);
-	return(nstr);
-	
+	return (nstr);
 }
 
 int	ft_atoi(const char *str)

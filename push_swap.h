@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
+/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 00:43:14 by macair           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:24:32 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
 char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
-void	ft_error();
+void	ft_error(void);
 void	swap(int *a, int *b);
 int		stack_chek(t_stack *a, int at_oi);
 int		ft_lstsize(t_stack *lst);
@@ -57,4 +57,9 @@ void	sort_5(t_stack **a, t_stack **b);
 void	sortall(t_stack **a, t_stack **b);
 int		chekp(t_stack *b, int index);
 void	free_stack(t_stack *stack);
+void	leaks_bye(char **av);
+int		get_index(t_stack *tmp, int content);
+void	index_node(t_stack *a);
+char	**_return_arg(char **av);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:52:18 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/22 20:10:26 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:32:39 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	rra(t_stack **a)
 {
-	t_stack *tmp;
-	t_stack *curnt;
-	
+	t_stack	*tmp;
+	t_stack	*curnt;
+
 	curnt = *a;
 	tmp = ft_lstlast(*a);
 	while (curnt->next->next)
@@ -28,9 +28,9 @@ void	rra(t_stack **a)
 
 void	rrb(t_stack **b)
 {
-	t_stack *tmp;
-	t_stack *curnt;
-	
+	t_stack	*tmp;
+	t_stack	*curnt;
+
 	curnt = *b;
 	tmp = ft_lstlast(*b);
 	while (curnt->next->next)
@@ -42,7 +42,7 @@ void	rrb(t_stack **b)
 
 void	pb(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *a;
 	*a = (*a)->next;
@@ -52,7 +52,7 @@ void	pb(t_stack **a, t_stack **b)
 
 void	pa(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *b;
 	*b = (*b)->next;

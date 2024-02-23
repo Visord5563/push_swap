@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
+/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:54:29 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 00:45:19 by macair           ###   ########.fr       */
+/*   Updated: 2024/02/23 13:22:22 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,6 @@ void	free_stack(t_stack *stack)
 		stack = tmp;
 	}
 }
-
-
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {

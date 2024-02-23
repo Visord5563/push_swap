@@ -3,7 +3,7 @@ NAME = push_swap
 CFLAGS = -Wall -Wextra -Werror 
 RM = rm -f
 
-SRCM = main.c utils.c move_utils.c move_utils1.c ft_split.c linkedlist.c utilsnorminit.c sort.c
+SRCM = main.c utils.c move_utils.c move_utils1.c ft_split.c linkedlist.c utilsnorminit.c sort.c utilsnorm1.c
 
 OBJM = $(SRCM:%.c=%.o)
 

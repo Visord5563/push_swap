@@ -6,18 +6,18 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 10:52:01 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:24:20 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void f(){
-	system("leaks push_swap");
-	}
+// void f(){
+// 	system("leaks push_swap");
+// }
+
 int	ft_chek(char *av)
 {
-	
 	int	i;
 
 	i = 0;
@@ -42,38 +42,14 @@ int	ft_chek(char *av)
 	return (1);
 }
 
-int get_index(t_stack *tmp, int content)
+int	chekp(t_stack *b, int index)
 {
-	int	i = 0;
-
-	while (tmp)
-	{
-		if (tmp->content < content)
-			i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-void index_node(t_stack *a)
-{
-	t_stack *tmp = a;
-	while(tmp)
-	{
-		tmp->index = get_index(a, tmp->content);
-		// printf("---%d\n", tmp->index);
-		tmp = tmp->next;
-	}
-}
-
-int chekp(t_stack *b, int index)
-{
-	int	p;
-	t_stack *tmp;
+	int		p;
+	t_stack	*tmp;
 
 	tmp = b;
 	p = 0;
-	while (p < ft_lstsize(b)/2)
+	while (p < (ft_lstsize(b) / 2))
 	{
 		if (tmp->index == index)
 			return (1);
@@ -109,49 +85,16 @@ void	chek_size(t_stack **a, t_stack **b)
 		sort_3(a);
 	if (ft_lstsize(*a) == 4)
 		sort_4(a, b);
-	if (ft_lstsize(*a) == 5)                          
+	if (ft_lstsize(*a) == 5)
 		sort_5(a, b);
 	if (ft_lstsize(*a) > 5)
 		sortall(a, b);
 	free_stack(*a);
 	free_stack(*b);
-	
-}
-
-void leaks_bye(char **av)
-{
-	int	i;
-
-	i = 0;
-	while (av[i])
-	{
-		free(av[i]);
-		i++;
-	}
-	free(av);
-}
-
-char **_return_arg(char **av)
-{
-	int	i;
-	char	*agv;
-	
-	i = 1;
-	agv = ft_strdup("");
-
-	while(av[i])
-	{
-		agv = ft_strjoin(agv, av[i]);
-		agv = ft_strjoin(agv, " ");
-		i++;
-	}
-	return (ft_split(agv, ' '));
-
 }
 
 int	main(int ac, char **av)
 {
-
 	t_stack		*a;
 	t_stack		*b;
 
@@ -159,7 +102,6 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac == 1)
 		return (0);
-
 	av = _return_arg(av);
 	stacka(av, &a);
 	if (cheksort(a) == 0)

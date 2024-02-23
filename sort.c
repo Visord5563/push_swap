@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:21:15 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 10:57:58 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:28:18 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,39 @@
 
 void	sort_3(t_stack **a)
 {
-		if ((*a)->content < (*a)->next->content )
+	if ((*a)->content < (*a)->next->content)
+	{
+		if ((*a)->content < (*a)->next->next->content)
 		{
-			if ((*a)->content < (*a)->next->next->content)
-			{
-				sa(a);
-				ra(a);
-			}
-			else
-				rra(a);
+			sa(a);
+			ra(a);
 		}
-		else if ((*a)->content > (*a)->next->content)
+		else
+			rra(a);
+	}
+	else if ((*a)->content > (*a)->next->content)
+	{
+		if ((*a)->next->content > (*a)->next->next->content)
 		{
-			if ((*a)->next->content > (*a)->next->next->content)
-			{
-				sa(a);
-				rra(a);
-			}
-			else if ((*a)->content > (*a)->next->next->content)
-				ra(a);
-			else
-				sa(a);
+			sa(a);
+			rra(a);
 		}
+		else if ((*a)->content > (*a)->next->next->content)
+			ra(a);
+		else
+			sa(a);
+	}
 }
 
-void sort_4(t_stack **a, t_stack **b)
+void	sort_4(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *a;
 	while (tmp)
 	{
 		if (tmp->index == 0)
-			break;
+			break ;
 		else if (ft_lstlast(*a)->index == 0)
 			rra(a);
 		else
@@ -59,15 +59,15 @@ void sort_4(t_stack **a, t_stack **b)
 	pa(a, b);
 }
 
-void sort_5(t_stack **a, t_stack **b)
+void	sort_5(t_stack **a, t_stack **b)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = *a;
 	while (tmp)
 	{
 		if (tmp->index == 1)
-			break;
+			break ;
 		else if (ft_lstlast(*a)->index == 1)
 			rra(a);
 		else
@@ -80,10 +80,10 @@ void sort_5(t_stack **a, t_stack **b)
 	sa(a);
 }
 
-void finalsort(t_stack **a, t_stack **b)
+void	finalsort(t_stack **a, t_stack **b)
 {
-    int	biggindex;
-    
+	int	biggindex;
+
 	biggindex = ft_lstlast(*a)->index;
 	while (ft_lstsize(*b) != 0)
 	{
@@ -95,7 +95,7 @@ void finalsort(t_stack **a, t_stack **b)
 			(pa(a, b), ra(a));
 		else if (ft_lstlast(*a)->index < (*b)->index)
 			(pa(a, b), ra(a));
-		else if ( ft_lstlast(*a)->index < ft_lstlast(*b)->index)
+		else if (ft_lstlast(*a)->index < ft_lstlast(*b)->index)
 			(rrb(b), pa(a, b), ra(a));
 		else if (ft_lstlast(*a)->index == ((*a)->index - 1))
 			rra(a);
@@ -105,21 +105,21 @@ void finalsort(t_stack **a, t_stack **b)
 			rrb(b);
 	}
 	while (ft_lstlast(*a)->index != biggindex)
-			rra(a);
+		rra(a);
 }
 
 void	sortall(t_stack **a, t_stack **b)
 {
-	int p1;
-	int p2;
+	int	p1;
+	int	p2;
 
 	p2 = 0;
 	while (ft_lstsize(*a) > 3)
 	{
-		p1 = ft_lstsize(*a)/6 + p2;
-		p2 = ft_lstsize(*a)/3 + p2;
+		p1 = (ft_lstsize(*a) / 6) + p2;
+		p2 = (ft_lstsize(*a) / 3) + p2;
 		while (a && p2 > ft_lstsize(*b))
-		{	
+		{
 			if ((*a)->index < p2)
 			{
 				pb(a, b);
