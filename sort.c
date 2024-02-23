@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:21:15 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/22 22:44:42 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:57:58 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,9 @@ void finalsort(t_stack **a, t_stack **b)
 			pa(a, b);
 		else if (ft_lstlast(*b)->index == ((*a)->index - 1))
 			(rrb(b), pa(a, b));
-		else if (ft_lstlast(*a)->index == biggindex || ft_lstlast(*a)->index < (*b)->index)
+		else if (ft_lstlast(*a)->index == biggindex)
+			(pa(a, b), ra(a));
+		else if (ft_lstlast(*a)->index < (*b)->index)
 			(pa(a, b), ra(a));
 		else if ( ft_lstlast(*a)->index < ft_lstlast(*b)->index)
 			(rrb(b), pa(a, b), ra(a));
@@ -102,6 +104,8 @@ void finalsort(t_stack **a, t_stack **b)
 		else
 			rrb(b);
 	}
+	while (ft_lstlast(*a)->index != biggindex)
+			rra(a);
 }
 
 void	sortall(t_stack **a, t_stack **b)
