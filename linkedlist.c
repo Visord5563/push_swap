@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   linkedlist.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:54:29 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/17 16:42:33 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 00:45:19 by macair           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,19 @@ t_stack	*ft_lstnew(int content)
 	return (list);
 }
 
-void	stack_clear(t_stack **lst)
+void	free_stack(t_stack *stack)
 {
-	t_stack	*node;
+	t_stack	*tmp;
 
-	while (*lst)
+	while (stack)
 	{
-		node = (*lst)->next;
-		free(*lst);
-		*lst = node;
+		tmp = stack->next;
+		free(stack);
+		stack = tmp;
 	}
 }
+
+
 
 void	ft_lstadd_front(t_stack **lst, t_stack *new)
 {

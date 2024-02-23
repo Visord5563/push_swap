@@ -6,7 +6,7 @@
 /*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:21:51 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 00:10:15 by macair           ###   ########.fr       */
+/*   Updated: 2024/02/23 00:30:20 by macair           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		j++;
 	}
 	nstr[i] = '\0';
+	free((char *)s1);
 	return(nstr);
 	
 }

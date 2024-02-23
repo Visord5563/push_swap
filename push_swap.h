@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
+/*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/22 21:41:54 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/23 00:43:14 by macair           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ void	sort_4(t_stack **a, t_stack **b);
 void	sort_5(t_stack **a, t_stack **b);
 void	sortall(t_stack **a, t_stack **b);
 int		chekp(t_stack *b, int index);
-
+void	free_stack(t_stack *stack);
 #endif

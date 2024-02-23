@@ -6,7 +6,7 @@
 /*   By: macair <macair@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 00:16:31 by macair           ###   ########.fr       */
+/*   Updated: 2024/02/23 01:05:37 by macair           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void f(){
 	}
 int	ft_chek(char *av)
 {
+	
 	int	i;
 
 	i = 0;
@@ -91,15 +92,13 @@ void	stacka(char **av, t_stack **a)
 	{
 		if (stack_chek(*a, ft_atoi(av[i])) == 1)
 		{
-			stack_clear(a);
+			free_stack(*a);
 			ft_error();
 		}
 		ft_lstadd_back(a, ft_lstnew(ft_atoi(av[i])));
-		// free(av[i]);
 		i++;
 	}
 	index_node(*a);
-	// free(av);
 }
 
 void	chek_size(t_stack **a, t_stack **b)
@@ -114,35 +113,58 @@ void	chek_size(t_stack **a, t_stack **b)
 		sort_5(a, b);
 	if (ft_lstsize(*a) > 5)
 		sortall(a, b);
+	free_stack(*a);
+	free_stack(*b);
+	
 }
 
-int	main(int ac, char **av)
+void leaks_bye(char **av)
 {
-	char		*agv;
-	int			i;
-	t_stack		*a;
-	t_stack		*b;
+	int	i;
 
-	// atexit(f);
-	a = NULL;
-	b = NULL;
-	agv = ft_strdup("");
-	i = 1;
-	if (ac == 1)
-		return (0);
+	i = 0;
 	while (av[i])
 	{
-		if (ft_chek(av[i]) == 0)
-			ft_error();
+		free(av[i]);
+		i++;
+	}
+	free(av);
+}
+
+char **_return_arg(char **av)
+{
+	int	i;
+	char	*agv;
+	
+	i = 1;
+	agv = ft_strdup("");
+
+	while(av[i])
+	{
 		agv = ft_strjoin(agv, av[i]);
 		agv = ft_strjoin(agv, " ");
 		i++;
 	}
-	av = ft_split(agv, ' ');
+	return (ft_split(agv, ' '));
+
+}
+
+int	main(int ac, char **av)
+{
+
+	t_stack		*a;
+	t_stack		*b;
+
+	a = NULL;
+	b = NULL;
+	if (ac == 1)
+		return (0);
+
+	av = _return_arg(av);
 	stacka(av, &a);
 	if (cheksort(a) == 0)
-		return (0);
+		exit(0);
 	chek_size(&a, &b);
-	stack_clear(&a);
+	leaks_bye(av);
 	return (0);
 }
