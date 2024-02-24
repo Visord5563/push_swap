@@ -6,13 +6,13 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 15:03:29 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:50:43 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_check(char *av)
+int	ft_chek(char *av)
 {
 	int	i;
 

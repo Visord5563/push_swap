@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 15:03:43 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:52:12 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,6 @@ void	leaks_bye(char **av);
 int		get_index(t_stack *tmp, int content);
 void	index_node(t_stack *a);
 char	**_return_arg(char **av);
-int		ft_check(char *av);
+int		ft_chek(char *av);
 
 #endif

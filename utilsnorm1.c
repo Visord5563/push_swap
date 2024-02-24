@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 13:16:41 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 15:04:53 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:52:00 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	**_return_arg(char **av)
 	agv = ft_strdup("");
 	while (av[i])
 	{
-		if (!ft_check(av[i]))
+		if (!ft_chek(av[i]))
 			ft_error();
 		agv = ft_strjoin(agv, av[i]);
 		agv = ft_strjoin(agv, " ");
