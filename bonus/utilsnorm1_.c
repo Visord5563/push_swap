@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utilsnorm1.c                                       :+:      :+:    :+:   */
+/*   utilsnorm1_.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/23 13:16:41 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 11:35:19 by saharchi         ###   ########.fr       */
+/*   Created: 2024/02/23 23:40:09 by saharchi          #+#    #+#             */
+/*   Updated: 2024/02/23 23:40:10 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	leaks_bye(char **av)
 {
@@ -25,30 +25,18 @@ void	leaks_bye(char **av)
 	free(av);
 }
 
-int	get_index(t_stack *tmp, int content)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*d1;
+	unsigned char	*d2;
 
 	i = 0;
-	while (tmp)
-	{
-		if (tmp->content < content)
-			i++;
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-void	index_node(t_stack *a)
-{
-	t_stack	*tmp;
-
-	tmp = a;
-	while (tmp)
-	{
-		tmp->index = get_index(a, tmp->content);
-		tmp = tmp->next;
-	}
+	d1 = (unsigned char *)s1;
+	d2 = (unsigned char *)s2;
+	while ((d1[i] == d2[i]) && (d1[i] != '\0' && d2[i] != '\0'))
+		i++;
+	return (d1[i] - d2[i]);
 }
 
 char	**_return_arg(char **av)
@@ -60,8 +48,6 @@ char	**_return_arg(char **av)
 	agv = ft_strdup("");
 	while (av[i])
 	{
-		if (!ft_chek(av[i]))
-			ft_error();
 		agv = ft_strjoin(agv, av[i]);
 		agv = ft_strjoin(agv, " ");
 		i++;

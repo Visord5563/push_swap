@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 11:34:44 by saharchi         ###   ########.fr       */
+/*   Created: 2024/02/23 19:16:53 by saharchi          #+#    #+#             */
+/*   Updated: 2024/02/24 10:40:10 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <limits.h>
 
 typedef struct s_list
 {
 	int				content;
-	int				index;
 	struct s_list	*next;
 }	t_stack;
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 t_stack	*ft_lstlast(t_stack *lst);
 void	ft_lstadd_back(t_stack **lst, t_stack *new);
@@ -43,23 +47,20 @@ void	rr(t_stack **a, t_stack **b);
 int		ft_atoi(const char *str);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlen(const char *s);
-char	**ft_split(char const *s, char c);
+char	**ft_split(char *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_error(void);
 void	swap(int *a, int *b);
-int		stack_chek(t_stack *a, int at_oi);
+int		stack_check(t_stack *a, int at_oi);
 int		ft_lstsize(t_stack *lst);
-int		cheksort(t_stack *a);
-void	sort_3(t_stack **a);
-void	sort_4(t_stack **a, t_stack **b);
-void	sort_5(t_stack **a, t_stack **b);
-void	sortall(t_stack **a, t_stack **b);
-int		chekp(t_stack *b, int index);
+int		checksort(t_stack *a);
 void	free_stack(t_stack *stack);
 void	leaks_bye(char **av);
-int		get_index(t_stack *tmp, int content);
-void	index_node(t_stack *a);
 char	**_return_arg(char **av);
-int		ft_chek(char *av);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+int		ft_strchr(char *s);
+char	*get_next_line(int fd);
+char	*ft_substr(char *s, unsigned int start, size_t len);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

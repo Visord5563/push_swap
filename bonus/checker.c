@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 11:34:15 by saharchi         ###   ########.fr       */
+/*   Created: 2024/02/23 18:46:00 by saharchi          #+#    #+#             */
+/*   Updated: 2024/02/24 12:29:28 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
-int	ft_chek(char *av)
+int	ft_check(char *av)
 {
 	int	i;
 
@@ -38,23 +38,6 @@ int	ft_chek(char *av)
 	return (1);
 }
 
-int	chekp(t_stack *b, int index)
-{
-	int		p;
-	t_stack	*tmp;
-
-	tmp = b;
-	p = 0;
-	while (p < (ft_lstsize(b) / 2))
-	{
-		if (tmp->index == index)
-			return (1);
-		tmp = tmp->next;
-		p++;
-	}
-	return (0);
-}
-
 void	stacka(char **av, t_stack **a)
 {
 	int	i;
@@ -62,7 +45,7 @@ void	stacka(char **av, t_stack **a)
 	i = 0;
 	while (av[i])
 	{
-		if (stack_chek(*a, ft_atoi(av[i])) == 1)
+		if (stack_check(*a, ft_atoi(av[i])) == 1)
 		{
 			free_stack(*a);
 			ft_error();
@@ -70,29 +53,41 @@ void	stacka(char **av, t_stack **a)
 		ft_lstadd_back(a, ft_lstnew(ft_atoi(av[i])));
 		i++;
 	}
-	index_node(*a);
 }
 
-void	chek_size(t_stack **a, t_stack **b)
+void	check(char *line, t_stack **a, t_stack **b)
 {
-	if (ft_lstsize(*a) == 2)
+	if (ft_strcmp(line, "sa\n") == 0)
 		sa(a);
-	if (ft_lstsize(*a) == 3)
-		sort_3(a);
-	if (ft_lstsize(*a) == 4)
-		sort_4(a, b);
-	if (ft_lstsize(*a) == 5)
-		sort_5(a, b);
-	if (ft_lstsize(*a) > 5)
-		sortall(a, b);
-	free_stack(*a);
-	free_stack(*b);
+	else if (ft_strcmp(line, "ra\n") == 0)
+		ra(a);
+	else if (ft_strcmp(line, "rb\n") == 0)
+		rb(b);
+	else if (ft_strcmp(line, "sb\n") == 0)
+		sb(b);
+	else if (ft_strcmp(line, "rrb\n") == 0)
+		rrb(b);
+	else if (ft_strcmp(line, "rra\n") == 0)
+		rra(a);
+	else if (ft_strcmp(line, "ss\n") == 0)
+		ss(*a, *b);
+	else if (ft_strcmp(line, "rr\n") == 0)
+		rr(a, b);
+	else if (ft_strcmp(line, "rrr\n") == 0)
+		rrr(a, b);
+	else if (ft_strcmp(line, "pa\n") == 0)
+		pa(a, b);
+	else if (ft_strcmp(line, "pb\n") == 0)
+		pb(a, b);
+	else
+		ft_error();
 }
 
 int	main(int ac, char **av)
 {
 	t_stack		*a;
 	t_stack		*b;
+	char		*line;
 
 	a = NULL;
 	b = NULL;
@@ -100,9 +95,19 @@ int	main(int ac, char **av)
 		return (0);
 	av = _return_arg(av);
 	stacka(av, &a);
-	if (cheksort(a) == 0)
-		exit(0);
-	chek_size(&a, &b);
 	leaks_bye(av);
+	while (1)
+	{
+		line = get_next_line(0);
+		if (!line)
+			break ;
+		check(line, &a, &b);
+		free(line);
+	}
+	if (checksort(a) == 0 && ft_lstsize(b) == 0)
+		write(1, "OK\n", 3);
+	else
+		write(1, "KO\n", 3);
+	free_stack(a);
 	return (0);
 }
