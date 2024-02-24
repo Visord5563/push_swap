@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 11:34:15 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:52:39 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_chek(char *av)
 		return (0);
 	while (av[i] && av[i] == ' ')
 		i++;
-	if (av[i] == '\0')
+	if (av[0] == '\0')
 		return (0);
 	i = 0;
 	while (av[i])
@@ -30,7 +30,7 @@ int	ft_chek(char *av)
 			&& ((av[i + 1] == '\0' || av[i + 1] == ' ')
 				|| (av[i - 1] >= '0' && av[i + 1] <= '9')))
 			return (0);
-		if (av[i] != ' ' && (av[i] < '0' || av[i + 1] > '9')
+		if (av[i] != ' ' && (av[i] < '0' || av[i] > '9')
 			&& !(av[i] == '+' || av[i] == '-'))
 			return (0);
 		i++;
