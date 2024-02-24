@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 15:56:31 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 16:20:16 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,9 @@ int	ft_chek(char *av)
 	int	i;
 
 	i = 0;
-	if (av[0] == '\0')
-		return (0);
 	while (av[i] && av[i] == ' ')
 		i++;
-	if (av[i] == '\0')
+	if (!av[i])
 		return (0);
 	i = 0;
 	while (av[i])
