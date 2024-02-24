@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 20:08:58 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/23 13:28:37 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:11:57 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	rrr(t_stack **a, t_stack **b)
 	write(1, "rrr\n", 4);
 }
 
-int	stack_chek(t_stack *a, int at_oi)
+int	stack_check(t_stack *a, int at_oi)
 {
 	t_stack	*newlst;
 
@@ -56,7 +56,7 @@ int	ft_lstsize(t_stack *lst)
 	return (i);
 }
 
-int	cheksort(t_stack *a)
+int	checksort(t_stack *a)
 {
 	while (a->next)
 	{

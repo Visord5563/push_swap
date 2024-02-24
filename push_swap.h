@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 04:16:32 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 11:34:44 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:03:43 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,19 @@ char	**ft_split(char const *s, char c);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_error(void);
 void	swap(int *a, int *b);
-int		stack_chek(t_stack *a, int at_oi);
+int		stack_check(t_stack *a, int at_oi);
 int		ft_lstsize(t_stack *lst);
-int		cheksort(t_stack *a);
+int		checksort(t_stack *a);
 void	sort_3(t_stack **a);
 void	sort_4(t_stack **a, t_stack **b);
 void	sort_5(t_stack **a, t_stack **b);
 void	sortall(t_stack **a, t_stack **b);
-int		chekp(t_stack *b, int index);
+int		checkp(t_stack *b, int index);
 void	free_stack(t_stack *stack);
 void	leaks_bye(char **av);
 int		get_index(t_stack *tmp, int content);
 void	index_node(t_stack *a);
 char	**_return_arg(char **av);
-int		ft_chek(char *av);
+int		ft_check(char *av);
 
 #endif

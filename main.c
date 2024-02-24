@@ -6,13 +6,13 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 19:51:25 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 13:52:39 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 15:03:29 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_chek(char *av)
+int	ft_check(char *av)
 {
 	int	i;
 
@@ -38,7 +38,7 @@ int	ft_chek(char *av)
 	return (1);
 }
 
-int	chekp(t_stack *b, int index)
+int	checkp(t_stack *b, int index)
 {
 	int		p;
 	t_stack	*tmp;
@@ -62,7 +62,7 @@ void	stacka(char **av, t_stack **a)
 	i = 0;
 	while (av[i])
 	{
-		if (stack_chek(*a, ft_atoi(av[i])) == 1)
+		if (stack_check(*a, ft_atoi(av[i])) == 1)
 		{
 			free_stack(*a);
 			ft_error();
@@ -73,7 +73,7 @@ void	stacka(char **av, t_stack **a)
 	index_node(*a);
 }
 
-void	chek_size(t_stack **a, t_stack **b)
+void	check_size(t_stack **a, t_stack **b)
 {
 	if (ft_lstsize(*a) == 2)
 		sa(a);
@@ -100,9 +100,9 @@ int	main(int ac, char **av)
 		return (0);
 	av = _return_arg(av);
 	stacka(av, &a);
-	if (cheksort(a) == 0)
+	if (checksort(a) == 0)
 		exit(0);
-	chek_size(&a, &b);
+	check_size(&a, &b);
 	leaks_bye(av);
 	return (0);
 }
