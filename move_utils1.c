@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 01:52:18 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 00:39:08 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 12:44:59 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	rra(t_stack **a)
 	t_stack	*tmp;
 	t_stack	*curnt;
 
-	if (!*a)
+	if (!*a || !(*a)->next)
 		return ;
 	curnt = *a;
 	tmp = ft_lstlast(*a);
@@ -33,7 +33,7 @@ void	rrb(t_stack **b)
 	t_stack	*tmp;
 	t_stack	*curnt;
 
-	if (!*b)
+	if (!*b || !(*b)->next)
 		return ;
 	curnt = *b;
 	tmp = ft_lstlast(*b);
