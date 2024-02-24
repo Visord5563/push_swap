@@ -6,7 +6,7 @@
 /*   By: saharchi <saharchi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/23 19:16:53 by saharchi          #+#    #+#             */
-/*   Updated: 2024/02/24 10:40:10 by saharchi         ###   ########.fr       */
+/*   Updated: 2024/02/24 13:14:02 by saharchi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,6 @@ int		ft_strchr(char *s);
 char	*get_next_line(int fd);
 char	*ft_substr(char *s, unsigned int start, size_t len);
 int		ft_strcmp(const char *s1, const char *s2);
+int		ft_check(char *av);
 
 #endif
